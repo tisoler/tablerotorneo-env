@@ -15,7 +15,7 @@ Traer los submodulos (La API y el Front)
 
 ```
 cd tablerotorneo-env
-git submodule update --remote --recursive
+git submodule update --init --recursive
 ```
 
 Crear las imagenes:
