@@ -1,3 +1,7 @@
+# tablerotorneo-env
+
+Proyecto docker de tablerotorneo
+
 Entorno virtual para desarrollo del proyecto Tablero Torneo.
 
 
