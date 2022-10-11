@@ -1,0 +1,6 @@
+[submodule "tablerotorneo/tablerotorneo"]
+	path = tablerotorneo/tablerotorneo
+	url = https://github.com/tisoler/tablerotorneo
+[submodule "tablerotorneo-api/tablerotorneo-api"]
+	path = tablerotorneo-api/tablerotorneo-api
+	url = https://github.com/tisoler/tablerotorneo-api

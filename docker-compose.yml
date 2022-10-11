@@ -1,0 +1,47 @@
+version: "3"
+services:
+
+  tablerotorneo:
+    build: ./tablerotorneo/.
+    volumes:
+      - ${TABLERO_TORNEO_PATH}/public:/app/public/
+      - ${TABLERO_TORNEO_PATH}/src:/app/src/
+      - ${TABLERO_TORNEO_PATH}/tsconfig.json:/app/tsconfig.json
+    ports:
+      - 3000:3000
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:3008
+    command: npm start
+    
+  tablerotorneo-api:
+    build: ./tablerotorneo-api/.
+    volumes:
+      - ${TABLERO_TORNEO_API_PATH}/src:/app/src/
+      - ${TABLERO_TORNEO_API_PATH}/tsconfig.json:/app/tsconfig.json
+    ports:
+      - 3008:3008
+    environment:
+      - API_PORT=3008
+      - FRONTEND_URL=http://localhost:3000
+      - BASE_DATOS_HOST=tablerotorneo-mysql
+      - BASE_DATOS_PORT=3306
+      - BASE_DATOS_USUARIO=user
+      - BASE_DATOS_PASSWORD=password
+      - BASE_DATOS=tablerotorneo
+      - USUARIO=usuario
+      - CLAVE=clave
+
+    depends_on:
+      - tablerotorneo-mysql
+    command: npm run start:dev
+    
+  tablerotorneo-mysql:
+    build: ./database/.
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=tablerotorneo
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
